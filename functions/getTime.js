@@ -3,4 +3,4 @@ const getTime = () => {
   return d.toLocaleString();
 };
 
-module.exports = getTime();
+module.exports = getTime;

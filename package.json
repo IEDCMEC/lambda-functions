@@ -1,17 +1,20 @@
 {
-  "name": "lambdas",
+  "name": "lambda-functions",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "nodeindex.js"
+    "dev": "isDev=true nodemon index.js",
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "lambda functions",
+    "serverless",
+    "express"
+  ],
+  "author": "aldrinjenson@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "aws-serverless-express": "^3.4.0",
     "express": "^4.18.2",
     "serverless-http": "^3.1.1"
   }

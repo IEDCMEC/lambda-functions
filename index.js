@@ -1,5 +1,6 @@
 const express = require("express");
 const echo = require("./functions/echo");
+const getName = require("./functions/getName");
 const getTime = require("./functions/getTime");
 
 const app = express();
@@ -19,14 +20,16 @@ app.get("/echo", (req, res) => {
   res.send(data);
 });
 
+app.get("/getname", (_, res) => {
+  res.send(getName());
+});
+
 app.get("/", (_, res) => {
   console.log("yo");
   res.send({ working: "yes bro" });
 });
 
-// console.log(process.env);
-// console.log(process.env.isdev);
-if (process.env.isdev) {
+if (process.env.isDev) {
   app.listen(5000, () => console.log("listening on port 5000"));
 }
 
