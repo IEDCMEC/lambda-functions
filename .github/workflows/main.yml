@@ -1,30 +1,29 @@
 name: lambda-deployment-with-github-action
 
-on: 
+on:
   push:
-    branches:
-        main # You can use any of your root or master branch name
-  
+    branches: main # You can use any of your root or master branch name
+
 jobs:
   lambda-deploy:
-  	runs-on: ubuntu-latest
-    steps:
-      - name: Checkout to repo
-        uses: actions/checkout@v2
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout to repo
+      uses: actions/checkout@v2
 
-      - name: Setup node environment
-        uses: actions/setup-node@v1
-        with:
-			node-version: '14.x'
-          
-      - name: Install serverless globally
-        run: npm install -g serverless
-      
-      - name: Configure serverless authentication
-        run: sls config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    - name: Setup node environment
+      uses: actions/setup-node@v1
+      with:
+        - node-version: "14.x"
 
-      - name: Install npm dependencies
-        run: npm ci
-     
-      - name: Deploy lambda function
-        run: sls deploy
+    - name: Install serverless globally
+      run: npm install -g serverless
+
+    - name: Configure serverless authentication
+      run: sls config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Deploy lambda function
+      run: sls deploy
