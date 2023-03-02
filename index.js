@@ -4,12 +4,7 @@ const getTime = require("./functions/getTime");
 
 const app = express();
 
-app.get("/", (req, res) => {
-  console.log("yo");
-  res.send({ working: "yes bro" });
-});
-
-app.get("/time", (req, res) => {
+app.get("/time", (_, res) => {
   const t = getTime();
   res.send(t);
 });
@@ -24,9 +19,15 @@ app.get("/echo", (req, res) => {
   res.send(data);
 });
 
+app.get("/", (_, res) => {
+  console.log("yo");
+  res.send({ working: "yes bro" });
+});
+
 // console.log(process.env);
 // console.log(process.env.isdev);
 if (process.env.isdev) {
   app.listen(5000, () => console.log("listening on port 5000"));
 }
+
 module.exports = app;
