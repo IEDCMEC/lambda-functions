@@ -1,8 +1,8 @@
-service: sample-app
+service: express-to-lambda
 provider:
   name: aws
   runtime: nodejs16.x
-  stage: dev
+  stage: prod
   region: ap-south-1
   memorySize: 128
 functions:
