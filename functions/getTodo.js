@@ -5,6 +5,7 @@ const getTodo = async (getAll = false) => {
   if (getAll) {
     url = "https://jsonplaceholder.typicode.com/todos";
   }
+
   const todo = await axios.get(url);
   return todo.data;
 };
