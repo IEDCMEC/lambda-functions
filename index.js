@@ -34,7 +34,7 @@ app.get("/gettodo", async (_, res) => {
 
 app.get("/", (_, res) => {
   console.log("yo");
-  res.send({ working: "yes bro", status: "alive and kicking" });
+  res.send({ working: "yes bro", status: "Alive and kicking" });
 });
 
 if (process.env.isDev) {
