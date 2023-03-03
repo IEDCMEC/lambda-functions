@@ -1,7 +1,5 @@
 const express = require("express");
-const echo = require("./functions/echo");
-const getName = require("./functions/getName");
-const getTime = require("./functions/getTime");
+const { echo, getTime, getName, getTodo } = require("./functions");
 
 const app = express();
 
@@ -22,6 +20,16 @@ app.get("/echo", (req, res) => {
 
 app.get("/getname", (_, res) => {
   res.send(getName());
+});
+
+app.get("/gettodos", async (_, res) => {
+  const data = await getTodo(true);
+  res.send(data);
+});
+
+app.get("/gettodo", async (_, res) => {
+  const data = await getTodo();
+  res.send(data);
 });
 
 app.get("/", (_, res) => {
