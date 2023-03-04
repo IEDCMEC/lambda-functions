@@ -1,17 +1,30 @@
 require("dotenv").config();
 const puppeteer = require("puppeteer");
+const chromium = require("@sparticuz/chromium");
 
 const getExplara = async () => {
   try {
     const browser = await puppeteer.launch({
+      args: chromium.args,
+      // defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath(),
+      // headless: chromium.headless,
       headless: true,
-      // Not setting the viewport size will lead to pupeteer opening the site on a smaller screen.
-      // This leads to many of the buttons used to reach the dashboard being hidden.
+      ignoreHTTPSErrors: true,
       defaultViewport: {
         width: 1920,
         height: 1080,
       },
     });
+    // const browser = await puppeteer.launch({
+    //   headless: true,
+    //   // Not setting the viewport size will lead to pupeteer opening the site on a smaller screen.
+    //   // This leads to many of the buttons used to reach the dashboard being hidden.
+    //   defaultViewport: {
+    //     width: 1920,
+    //     height: 1080,
+    //   },
+    // });
 
     const page = await browser.newPage();
     await page.goto("https://in.explara.com/a/login");
