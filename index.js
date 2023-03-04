@@ -35,7 +35,7 @@ app.get("/gettodo", async (_, res) => {
 app.get("/explara", async (_, res) => {
   const data = await getExplara();
   res.send(data);
-})
+});
 
 app.get("/", (_, res) => {
   console.log("yo");

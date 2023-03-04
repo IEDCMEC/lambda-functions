@@ -15,6 +15,11 @@ jobs:
         with:
           node-version: 16
 
+      - name: Set environment variables
+        env:
+          EXPLARA_EMAIL: ${{ secrets.EXPLARA_EMAIL }}
+          EXPLARA_PASSWORD: ${{ secrets.EXPLARA_PASSWORD }}
+
       - name: Install serverless globally
         run: npm install -g serverless
 
