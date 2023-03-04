@@ -1,5 +1,5 @@
 const express = require("express");
-const { echo, getTime, getName, getTodo } = require("./functions");
+const { echo, getTime, getName, getTodo, getExplara } = require("./functions");
 
 const app = express();
 
@@ -31,6 +31,11 @@ app.get("/gettodo", async (_, res) => {
   const data = await getTodo();
   res.send(data);
 });
+
+app.get("/explara", async (_, res) => {
+  const data = await getExplara();
+  res.send(data);
+})
 
 app.get("/", (_, res) => {
   console.log("yo");
