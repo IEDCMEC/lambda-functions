@@ -16,9 +16,9 @@ jobs:
           node-version: 16
 
       - name: Set environment variables
-        env:
-          EXPLARA_EMAIL: ${{ secrets.EXPLARA_EMAIL }}
-          EXPLARA_PASSWORD: ${{ secrets.EXPLARA_PASSWORD }}
+        run: |
+          echo "EXPLARA_EMAIL=${{ secrets.EXPLARA_EMAIL }}" >> $GITHUB_ENV
+          echo "EXPLARA_PASSWORD=${{ secrets.EXPLARA_PASSWORD }}" >> $GITHUB_ENV
 
       - name: Install serverless globally
         run: npm install -g serverless
