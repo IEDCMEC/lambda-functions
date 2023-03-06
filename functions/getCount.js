@@ -1,7 +1,7 @@
 const fs = require('fs');
 const csv = require('csv-parser');
 
-const getCount = () => {
+const getCount = async () => {
     const filePaths = ['1.csv', '2.csv'];
     const filterColumns = ['technical-workshop-topic', 'non-technical-workshop-topic'];
 
