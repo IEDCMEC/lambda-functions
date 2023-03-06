@@ -61,4 +61,4 @@ if (process.env.isDev) {
 
 module.exports = app;
 
-getWorkshopCount();
+// getWorkshopCount();
