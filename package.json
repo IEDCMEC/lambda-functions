@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "isDev=true node index.js",
-    "dev": "isDev=true nodemon index.js"
+    "start": " node index.js",
+    "dev": " nodemon index.js"
   },
   "keywords": [
     "lambda functions",
@@ -17,6 +17,7 @@
   "dependencies": {
     "@sparticuz/chromium": "^111.0.0",
     "axios": "^1.3.4",
+    "csv-parser": "^3.0.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "puppeteer": "^19.7.2",
