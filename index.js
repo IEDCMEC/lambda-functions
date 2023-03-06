@@ -1,5 +1,13 @@
 const express = require("express");
-const { echo, getTime, getName, getTodo, getExplara,getCount } = require("./functions");
+const {
+  echo,
+  getTime,
+  getName,
+  getTodo,
+  getExplara,
+  getCount,
+} = require("./functions");
+const getWorkshopCount = require("./functions/getWorkshopCount");
 
 const app = express();
 
@@ -42,16 +50,15 @@ app.get("/count", async (_, res) => {
   res.send(data);
 });
 
-
 app.get("/", (_, res) => {
   console.log("yo");
   res.send({ working: "yes bro", status: "Alive and kicking" });
 });
-
-
 
 if (process.env.isDev) {
   app.listen(5000, () => console.log("listening on port 5000"));
 }
 
 module.exports = app;
+
+getWorkshopCount();
