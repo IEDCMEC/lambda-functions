@@ -44,8 +44,8 @@ app.get("/count", async (_, res) => {
 });
 
 app.get("/certificate", async (_, res) => {
-  await generateCertificate();
-  res.send("Certificate generated");
+  const data = await generateCertificate();
+  res.send(data);
 });
 
 
