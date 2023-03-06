@@ -1,5 +1,5 @@
 const express = require("express");
-const { echo, getTime, getName, getTodo, getExplara,getCount } = require("./functions");
+const { echo, getTime, getName, getTodo, getExplara, getCount, generateCertificate } = require("./functions");
 
 const app = express();
 
@@ -40,6 +40,11 @@ app.get("/explara", async (_, res) => {
 app.get("/count", async (_, res) => {
   const data = await getCount();
   res.send(data);
+});
+
+app.get("/certificate", async (_, res) => {
+  await generateCertificate();
+  res.send("Certificate generated");
 });
 
 
