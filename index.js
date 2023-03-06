@@ -1,5 +1,5 @@
 const express = require("express");
-const { echo, getTime, getName, getTodo, getExplara } = require("./functions");
+const { echo, getTime, getName, getTodo, getExplara,getCount } = require("./functions");
 
 const app = express();
 
@@ -37,10 +37,18 @@ app.get("/explara", async (_, res) => {
   res.send(data);
 });
 
+app.get("/count", async (_, res) => {
+  const data = await getCount();
+  res.send(data);
+});
+
+
 app.get("/", (_, res) => {
   console.log("yo");
   res.send({ working: "yes bro", status: "Alive and kicking" });
 });
+
+
 
 if (process.env.isDev) {
   app.listen(5000, () => console.log("listening on port 5000"));
