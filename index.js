@@ -1,12 +1,5 @@
 const express = require("express");
-const {
-  echo,
-  getTime,
-  getName,
-  getTodo,
-  getExplara,
-  getCount,
-} = require("./functions");
+const { echo, getTime, getName, getTodo, getExplara, getCount, generateCertificate } = require("./functions");
 const getWorkshopCount = require("./functions/getWorkshopCount");
 
 const app = express();
@@ -49,6 +42,12 @@ app.get("/count", async (_, res) => {
   const data = await getCount();
   res.send(data);
 });
+
+app.get("/certificate", async (_, res) => {
+  const data = await generateCertificate();
+  res.send(data);
+});
+
 
 app.get("/", (_, res) => {
   console.log("yo");
