@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": " node index.js",
-    "dev": " nodemon index.js"
+    "start": "isDev=true node index.js",
+    "dev": "isDev=true nodemon index.js"
   },
   "keywords": [
     "lambda functions",

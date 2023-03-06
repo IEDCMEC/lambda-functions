@@ -1,5 +1,6 @@
 const express = require("express");
 const { echo, getTime, getName, getTodo, getExplara, getCount, generateCertificate } = require("./functions");
+const getWorkshopCount = require("./functions/getWorkshopCount");
 
 const app = express();
 
@@ -53,10 +54,10 @@ app.get("/", (_, res) => {
   res.send({ working: "yes bro", status: "Alive and kicking" });
 });
 
-
-
 if (process.env.isDev) {
   app.listen(5000, () => console.log("listening on port 5000"));
 }
 
 module.exports = app;
+
+// getWorkshopCount();
