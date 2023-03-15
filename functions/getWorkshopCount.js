@@ -29,17 +29,22 @@ const getWorkshopCount = async () => {
     let elements = await page.$x(
       '//*[@id="navbarNav"]/ul/li[1]/div[2]/div[1]/a[1]/div/div/div'
     );
-    console.log("here");
+    console.log("events page");
     await elements[0].click();
     await page.waitForNavigation();
     console.log("reached events list");
 
-    // Clicking on manage button
-    elements = await page.$x(
-      "/html/body/div[2]/div/div[2]/div[1]/div[2]/div[4]/div/div[1]/div[3]/p[2]/a"
+    await page.goto(
+      "https://www.explara.com/em/event/manage/dashboard/eid/629077?type=ft"
     );
-    await elements[0].click();
-    await page.waitForNavigation();
+    // // Clicking on manage button
+    // elements = await page.$x(
+    //   "/html/body/div[2]/div/div[2]/div[1]/div[2]/div[4]/div/div[1]/div[3]/p[2]/a"
+    // );
+    // console.log(elements);
+
+    // await elements[0].click();
+    // await page.waitForNavigation();
     console.log("reached dashboard");
 
     // click on attendence section
@@ -86,5 +91,7 @@ const getWorkshopCount = async () => {
     return error.message;
   }
 };
+
+getWorkshopCount().then((res) => console.log(res));
 
 module.exports = getWorkshopCount;
