@@ -79,6 +79,6 @@ const getCount = () => {
   });
 };
 
-// getCount().then((res) => console.log(res));
+getCount().then((res) => console.log(res));
 
 module.exports = getCount;
