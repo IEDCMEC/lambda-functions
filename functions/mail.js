@@ -2,6 +2,8 @@ const fs = require('fs');
 const csv = require('csv-parser');
 const qrcode = require('qrcode');
 const nodemailer = require('nodemailer');
+const Jimp = require("jimp");
+
 
 const csvFilePath = './demo.csv';
 const outputDir = './qrcodes';
@@ -15,8 +17,8 @@ const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
     auth: {
-        user: 'ENter',
-        pass: 'Enter'
+        user: '@gmail.com',
+        pass: ''
     }
 });
 
@@ -38,6 +40,10 @@ fs.createReadStream(csvFilePath)
                 margin: 2
             });
 
+            const qrImage = await Jimp.read(qrCodePath);
+            const font = await Jimp.loadFont(Jimp.FONT_SANS_16_BLACK);
+            qrImage.print(font, 130, qrImage.bitmap.height - 20, id);
+            await qrImage.writeAsync(qrCodePath);
             const mailOptions = {
                 from: 'nazimfilzer@gmail.com',
                 to: email,
