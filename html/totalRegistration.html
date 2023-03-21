@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Explara Registration Count</title>
+  <style>
+    /* Styles for the loading spinner */
+    .loader {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 2s linear infinite;
+      margin: 50px auto;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Styles for the main content */
+    .content {
+      margin: 50px auto;
+      max-width: 600px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 style="text-align: center;">Explara Registration Count</h1>
+
+  <div id="loader" class="loader"></div>
+
+  <div style="text-align: center;">
+    <p>Fetching the latest count of registrations by automting browser actions</p>
+    <p>Will take some seconds.</p>
+    <p>Hold a while please.. a new browser is being spun up in the background🙂</p>
+  </div>
+
+  <div id="content" class="content" style="display: none;">
+    <p>Total count: <span id="totalCount"></span></p>
+    <p>Total count for main day: <span id="mainDayCount"></span></p>
+  </div>
+
+  <footer style="text-align: center; margin-top: 30%;">Made for Gayathri Sasi:)</footer>
+
+  <script>
+    // Make the API call to get the count
+    fetch('/explara')
+      .then(res => res.json())
+      .then(data => {
+        // Hide the loading spinner
+        console.log(data);
+        data = +data
+
+        document.getElementById('loader').style.display = 'none';
+
+        // Show the main content
+        document.getElementById('content').style.display = 'block';
+
+        // Set the total count and main day count
+        document.getElementById('totalCount').textContent = data;
+        document.getElementById('mainDayCount').textContent = data - 19;
+      })
+      .catch(error => console.error(error));
+  </script>
+</body>
+
+</html>

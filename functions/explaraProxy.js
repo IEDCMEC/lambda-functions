@@ -35,9 +35,10 @@ const getExplara = async () => {
 
     await page.waitForNavigation();
 
+    // await page.screenshot({ path: "screenshot2.png" });
     // Clicking on manage button
     elements = await page.$x(
-      "/html/body/div[2]/div/div[2]/div[1]/div[2]/div[4]/div/div[1]/div[3]/p[2]/a"
+      "/html/body/div[2]/div/div[2]/div[1]/div[2]/div[3]/div/div[1]/div[3]/p[2]/a"
     );
     await elements[0].click();
 
@@ -49,7 +50,8 @@ const getExplara = async () => {
       (element) => element.innerText,
       element
     );
-    console.log(registrationCount);
+    // console.log(registrationCount);
+    // console.log(typeof registrationCount);
 
     await page.screenshot({ path: "screenshot.png" });
 
@@ -61,5 +63,6 @@ const getExplara = async () => {
     return error.message;
   }
 };
+// getExplara().then((res) => console.log(res));
 
 module.exports = getExplara;

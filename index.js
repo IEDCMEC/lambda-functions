@@ -1,6 +1,14 @@
 const express = require("express");
-const { echo, getTime, getName, getTodo, getExplara, getCount, generateCertificate } = require("./functions");
-const getWorkshopCount = require("./functions/getWorkshopCount");
+const fs = require("fs");
+const {
+  echo,
+  getTime,
+  getName,
+  getTodo,
+  getExplara,
+  getCount,
+  generateCertificate,
+} = require("./functions");
 
 const app = express();
 
@@ -35,6 +43,7 @@ app.get("/gettodo", async (_, res) => {
 
 app.get("/explara", async (_, res) => {
   const data = await getExplara();
+  console.log({ data });
   res.send(data);
 });
 
@@ -48,6 +57,10 @@ app.get("/certificate", async (_, res) => {
   res.send(data);
 });
 
+app.get("/registrations", async (_, res) => {
+  const filePath = __dirname + "/html/totalRegistration.html";
+  res.sendFile(filePath);
+});
 
 app.get("/", (_, res) => {
   console.log("yo");

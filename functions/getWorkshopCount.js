@@ -92,6 +92,6 @@ const getWorkshopCount = async () => {
   }
 };
 
-getWorkshopCount().then((res) => console.log(res));
+// getWorkshopCount().then((res) => console.log(res));
 
 module.exports = getWorkshopCount;
