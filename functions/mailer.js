@@ -20,9 +20,9 @@ const main = async (body) => {
       html: body.content,
     };
     await transporter.sendMail(mailOptions);
-    console.log(`Sent mail to ${body.toEmail} with subject ${body.subject}`);
+    return(`Sent mail to ${body.toEmail} with subject ${body.subject}`);
   } catch (error) {
-    console.error(
+    return(
       `Failed to send email to ${body.toEmail} having error : ${error}`
     );
   }
