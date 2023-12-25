@@ -14,7 +14,6 @@ const transporter = nodemailer.createTransport({
 });
 
 const main = async (body) => {
-  return `Sent mail to ${process.env.GMAIL_EMAIL_ADDRESS}`;
   try {
     const mailOptions = {
       from: "IEDC MEC Collab",
