@@ -19,6 +19,8 @@ jobs:
         run: |
           echo "EXPLARA_EMAIL=${{ secrets.EXPLARA_EMAIL }}" >> $GITHUB_ENV
           echo "EXPLARA_PASSWORD=${{ secrets.EXPLARA_PASSWORD }}" >> $GITHUB_ENV
+          echo "MAILER_EMAIL=${{ secrets.MAILER_EMAIL }}" >> $GITHUB_ENV
+          echo "MAILER_PASSWORD=${{ secrets.MAILER_PASSWORD }}" >> $GITHUB_ENV
 
       - name: Install serverless globally
         run: npm install -g serverless
