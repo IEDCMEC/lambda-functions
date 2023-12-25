@@ -1,5 +1,6 @@
 const express = require("express");
 const fs = require("fs");
+const cors = require("cors");
 const {
   echo,
   getTime,
@@ -8,9 +9,14 @@ const {
   getExplara,
   getCount,
   generateCertificate,
+  mailer
 } = require("./functions");
 
 const app = express();
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors());
 
 app.get("/time", (_, res) => {
   const t = getTime();
@@ -54,6 +60,11 @@ app.get("/count", async (_, res) => {
 
 app.get("/certificate", async (_, res) => {
   const data = await generateCertificate();
+  res.send(data);
+});
+
+app.post("/mailer", async (_, res) => {
+  const data = await mailer(_.body);
   res.send(data);
 });
 

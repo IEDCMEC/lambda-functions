@@ -5,6 +5,7 @@ const getTodo = require("./getTodo");
 const getExplara = require("./explaraProxy");
 const getCount = require("./getCount");
 const generateCertificate = require("./generateCertificate");
+const mailer = require("./mailer");
 
 module.exports = {
   echo,
@@ -13,5 +14,6 @@ module.exports = {
   getTime,
   getExplara,
   getCount,
-  generateCertificate
+  generateCertificate,
+  mailer
 };
