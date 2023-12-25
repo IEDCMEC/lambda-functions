@@ -4,6 +4,7 @@ const transporter = nodemailer.createTransport({
   service: "gmail",
   host: "smtp.gmail.com",
   port: 587,
+  secure:false,
   pool: true,
   auth: {
     user: process.env.MAILER_EMAIL,
@@ -14,7 +15,7 @@ const transporter = nodemailer.createTransport({
 const main = async (body) => {
   try {
     const mailOptions = {
-      from: "iedcmec@mec.ac.in",
+      from: "IEDC MEC Collab",
       to: body.toEmail,
       subject: body.subject,
       html: body.content,
