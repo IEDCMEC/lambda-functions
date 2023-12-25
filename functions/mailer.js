@@ -1,14 +1,15 @@
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
   host: "smtp.gmail.com",
   port: 587,
-  secure:false,
-  pool: true,
+  secure: false,
   auth: {
-    user: process.env.MAILER_EMAIL,
-    pass: process.env.MAILER_PASSWORD,
+    type: "OAuth2",
+    user: process.env.GMAIL_EMAIL_ADDRESS,
+    clientId: process.env.GMAIL_API_CLIENT_ID,
+    clientSecret: process.env.GMAIL_API_CLIENT_SECRET,
+    refreshToken: process.env.GMAIL_API_REFRESH_TOKEN,
   },
 });
 
@@ -21,13 +22,10 @@ const main = async (body) => {
       html: body.content,
     };
     await transporter.sendMail(mailOptions);
-    return(`Sent mail to ${body.toEmail} with subject ${body.subject}`);
+    return `Sent mail to ${body.toEmail} with subject ${body.subject}`;
   } catch (error) {
-    return(
-      `Failed to send email to ${body.toEmail} having error : ${error}`
-    );
+    return `Failed to send email to ${body.toEmail} having error : ${error}`;
   }
 };
-
 
 module.exports = main;
