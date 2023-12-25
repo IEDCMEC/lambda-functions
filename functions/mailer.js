@@ -14,17 +14,44 @@ const transporter = nodemailer.createTransport({
 });
 
 const main = async (body) => {
-  try {
-    const mailOptions = {
-      from: "IEDC MEC Collab",
-      to: body.toEmail,
-      subject: body.subject,
-      html: body.content,
-    };
-    await transporter.sendMail(mailOptions);
-    return `Sent mail to ${body.toEmail} with subject ${body.subject}`;
-  } catch (error) {
-    return `Failed to send email to ${body.toEmail} having error : ${error}`;
+  if (body.password !== process.env.MAILER_PASSWORD || !body.password) {
+    return { status: 401, message: "Unauthorized" };
+  } else {
+    if (!body.toEmail) {
+      return {
+        status: 500,
+        message: `No Reciever Email Found.`,
+      };
+    } else if (!body.subject) {
+      return {
+        status: 500,
+        message: `No Subject Found.`,
+      };
+    } else if (!body.content) {
+      return {
+        status: 500,
+        message: `No Content Found.`,
+      };
+    } else {
+      try {
+        const mailOptions = {
+          from: "IEDC MEC Collab",
+          to: body.toEmail,
+          subject: body.subject,
+          html: body.content,
+        };
+        await transporter.sendMail(mailOptions);
+        return {
+          status: 200,
+          message: `Sent mail to ${body.toEmail} with subject ${body.subject}`,
+        };
+      } catch (error) {
+        return {
+          status: 500,
+          message: `Failed to send email to ${body.toEmail} having error : ${error}`,
+        };
+      }
+    }
   }
 };
 
