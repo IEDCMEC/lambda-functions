@@ -85,6 +85,7 @@ const main = () => {
         //   await new Promise((resolve) => setTimeout(resolve, 15000));
         //   console.log("Resuming...");
         // }
+        
         await transporter.sendMail(mailOptions);
         console.log(`Sent QR code for id ${id} to ${email}`);
       } catch (error) {
